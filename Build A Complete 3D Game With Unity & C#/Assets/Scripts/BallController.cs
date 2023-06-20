@@ -9,7 +9,7 @@ public class BallController : MonoBehaviour
 
     bool Started;
 
-    bool GameOver = false;
+    bool GameOver;
     Rigidbody rigidBody;
     // Start is called before the first frame update
     private void Awake()
@@ -20,6 +20,7 @@ public class BallController : MonoBehaviour
     void Start()
     {
         Started = false;
+        GameOver = false;
     }
 
     // Update is called once per frame
@@ -38,6 +39,7 @@ public class BallController : MonoBehaviour
         if(!Physics.Raycast(transform.position, Vector3.down, 1f))
         {
             GameOver = true;
+            Camera.main.GetComponent<CameraController>().GameOver = true;
             rigidBody.velocity = new Vector3(0, -25f, 0);
         }
 
