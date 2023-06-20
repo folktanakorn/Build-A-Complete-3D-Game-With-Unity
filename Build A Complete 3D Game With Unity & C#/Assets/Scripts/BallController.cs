@@ -7,6 +7,7 @@ public class BallController : MonoBehaviour
     [SerializeField]
     private float speed;
 
+    bool Started;
     Rigidbody rigidBody;
     // Start is called before the first frame update
     private void Awake()
@@ -16,13 +17,20 @@ public class BallController : MonoBehaviour
 
     void Start()
     {
-        
-        rigidBody.velocity = new Vector3(speed, 0, 0);
+        Started = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!Started)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                rigidBody.velocity = new Vector3(speed, 0, 0);
+                Started = true;
+            }
+        }
         if (Input.GetMouseButtonDown(0))
         {
             SwitchWay();
