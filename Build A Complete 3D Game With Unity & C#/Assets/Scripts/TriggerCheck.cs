@@ -8,7 +8,7 @@ public class TriggerCheck : MonoBehaviour
     {
         if (other.gameObject.tag == "Ball")
         {
-            Debug.Log("Ball Enter");
+            
             Invoke("FallDown",0.2f);
         }
     }
