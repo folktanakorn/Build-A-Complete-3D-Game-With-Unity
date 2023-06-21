@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnPath : MonoBehaviour
 {
     public GameObject PathPrefabs;
+    public GameObject DiamonsPrefabs;
     Vector3 lastPosition;
     float size;
     public bool GameOver;
@@ -49,6 +50,12 @@ public class SpawnPath : MonoBehaviour
         pos.x += size;
         lastPosition = pos;
         Instantiate(PathPrefabs, pos, Quaternion.identity);
+
+        int RandomDiamons = Random.Range(0,4);
+        if (RandomDiamons < 2)
+        {
+            Instantiate(DiamonsPrefabs,new Vector3(pos.x,pos.y + 1.5f ,pos.z), DiamonsPrefabs.transform.rotation);
+        }
     }
     void SpawnZ()
     {
@@ -57,5 +64,13 @@ public class SpawnPath : MonoBehaviour
         lastPosition = pos;
         Instantiate(PathPrefabs, pos, Quaternion.identity);
 
+        int RandomDiamons = Random.Range(0, 4);
+        if (RandomDiamons < 2)
+        {
+            Instantiate(DiamonsPrefabs, new Vector3(pos.x, pos.y + 1.5f, pos.z), DiamonsPrefabs.transform.rotation);
+        }
+
     }
+
+  
 }
