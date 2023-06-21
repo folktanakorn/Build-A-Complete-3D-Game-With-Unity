@@ -33,6 +33,7 @@ public class BallController : MonoBehaviour
             {
                 rigidBody.velocity = new Vector3(speed, 0, 0);
                 Started = true;
+                GameManager.instance.GameStart();
             }
         }
 
@@ -42,6 +43,7 @@ public class BallController : MonoBehaviour
             GameOver = true;
             Camera.main.GetComponent<CameraController>().GameOver = true;
             rigidBody.velocity = new Vector3(0, -25f, 0);
+            GameManager.instance.GameOver();
         }
 
         if (Input.GetMouseButtonDown(0) && !GameOver)
