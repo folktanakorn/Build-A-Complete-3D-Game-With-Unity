@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    public GameObject Partical;
     [SerializeField]
     private float speed;
 
@@ -64,7 +65,9 @@ public class BallController : MonoBehaviour
     {
         if (other.gameObject.tag == "Diamons")
         {
+            GameObject Paticaltemp = Instantiate(Partical, other.gameObject.transform.position, Partical.transform.rotation) as GameObject;
             Destroy(other.gameObject);
+            Destroy(Paticaltemp,3f);
         }
     }
 }
